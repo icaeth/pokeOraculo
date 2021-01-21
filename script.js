@@ -3,22 +3,34 @@
 
 /* Llamadas a la api */
 
-/* $.getJSON("https://pokeapi.co/api/v2/pokemon/ditto", function (data) {
-    var name = [];
-    console.log('success', data);
-    name.push(data.name, data.base_experience, data.weight);
-    console.log(name);
-    $('.poke-card__description').html(name[1])
-    console.log(name[1])
-    console.log(name[2])
-});
- */
+let tamañoPoke = ""
+let pesoPoke = ""
+let tipoPoke = 5
+
+$.ajax({
+    type: 'GET',
+    url: 'https://pokeapi.co/api/v2/pokemon/cubone',
+    success: function (data) {
+        tamañoPoke = data.height
+        pesoPoke = data.weight
+        /* tipoPoke = data.type */
+        return tamañoPoke
+    }
+})
+
+
+/* 
+
+*/
+
+
 
 /* Gráfico */
 
-const tamaño = 3;
 
-window.onload = function () {
+
+
+/* window.onload = function () {
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
         animationDuration: 2000,
@@ -39,4 +51,28 @@ window.onload = function () {
         ]
     });
     chart.render();
-}
+} */
+
+$('.boton_grafico').click(function () {
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        animationDuration: 2000,
+        title: {
+            text: "Cual es mi afinidad con mi pokemón"
+        },
+        data: [
+            {
+                // Change type to "doughnut", "line", "splineArea", etc.
+                type: "column",
+                dataPoints: [
+                    { label: "Tamaño", y: tamañoPoke },
+                    { label: "Peso", y: pesoPoke },
+                    { label: "Tipo", y: tipoPoke },
+
+                ]
+            }
+        ]
+    });
+    chart.render();
+})
+
