@@ -25,7 +25,7 @@
 
                     <!-- FORMULARIO -->
                     <form class="row g-3">
-                        <h4 class="text-center">Moldea tu Pokemon</h4>
+                        <h4 class="text-center">Elige tu Pokemon</h4>
                         <div class="col-md-6">
                             <label for="validationDefault01" class="form-label">Entrenador Pokemon</label>
                             <input type="text" class="form-control" id="validationDefault01" placeholder="Ash" required>
@@ -36,13 +36,41 @@
                                 required>
                         </div>
 
+                        <div class="col-md-6">
+                            <label for="exampleDataList" class="form-label">Nombre Pokemon</label>
+                            <input class="form-control" list="datalistOptions" id="exampleDataList"
+                                placeholder="Pikachu...">
+                            <datalist class="pokeName" id="datalistOptions">
+
+                            </datalist>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleDataList2" class="form-label">ID Pokemon</label>
+                            <input class="form-control" list="idPokeDatalist" id="idPoke" placeholder="1...">
+                            <datalist class="pokeNumber" id="idPokeDatalist">
+
+                            </datalist>
+                        </div>
+
+
+
+
+                        <!-- Botón Invocar pokemon -->
+
+                        <div class="col-4">
+                            <button class="btn btn-danger boton_invocar" type="submit">Invocar Pokemon</button>
+                        </div>
+
+
+
+
+                        <h4 class="text-center">Adivina sus stats</h4>
 
                         <!-- Dropdowns -->
                         <div class="col-md-4">
                             <label for="validationDefault04" class="form-label">Tipo</label>
-                            <select class="form-select" id="validationDefault04" required>
-                                <option selected disabled value="">Elige...</option>
-                                <option>...</option>
+                            <select class="form-select" id="pokeTipo" required>
+                                <!-- <option selected disabled value="Elige...">Elige...</option> -->
                             </select>
                         </div>
 
@@ -63,7 +91,7 @@
                         </div>
 
                         <div class="col-12">
-                            <button class="btn btn-danger boton_grafico" type="submit">Activar Oráculo</button>
+                            <button class="btn btn-danger boton_grafico" type="submit">Ver Resultados</button>
                         </div>
 
                         <div class="col-12 visor">
@@ -77,18 +105,15 @@
                 <!-- AppCard -->
                 <div class="col-12 col-sm-5 mt-sm-0 mt-5 appCard">
                     <h4 class="text-center mb-5 pb-5">Pokemon Elegido</h4>
-
                     <div class="col mt-4 d-flex justify-content-center">
-                        <div class="pokeCardContainer bg-light">
 
+                        <div class="pokeCardContainer hide bg-light">
                             <div class="poke-card__image">
-                                <img class="poke-card__imageFloat"
-                                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/101.svg"
-                                    alt="">
+                                <img class="poke-card__imageFloat" src="" alt="">
                             </div>
 
                             <div class="poke-card__name">
-                                <h4 class="text-center fw-bold">Cubone</h4>
+                                <h4 class="poke-card__name__h4 text-center fw-bold"></h4>
                                 <p class="text-center poke-card__description">Lorem ipsum dolor, sit amet consectetur
                                     adipisicing elit.
                                     Nostrum, et.</p>
@@ -103,6 +128,10 @@
                                 <p class="fw-bold poke-card__p">TAMAÑO</p>
                             </div>
 
+                        </div>
+
+                        <div class="pokeCardContainer2">
+                            <img src="pokeball.svg" alt="">
                         </div>
 
                     </div>
