@@ -28,12 +28,11 @@
                         <h4 class="text-center">Elige tu Pokemon</h4>
                         <div class="col-md-6">
                             <label for="validationDefault01" class="form-label">Entrenador Pokemon</label>
-                            <input type="text" class="form-control" id="validationDefault01" placeholder="Ash" required>
+                            <input type="text" class="form-control" id="maestroPokemon" placeholder="Ash" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="validationDefault02" class="form-label">Nombre Pokemon</label>
-                            <input type="text" class="form-control" id="validationDefault02" placeholder="Pikachu"
-                                required>
+                            <label for="validationDefault02" class="form-label">Nick Pokemon</label>
+                            <input type="text" class="form-control" id="nickPokemon" placeholder="Pikachu" required>
                         </div>
 
                         <div class="col-md-6">
@@ -68,26 +67,47 @@
 
                         <!-- Dropdowns -->
                         <div class="col-md-4">
-                            <label for="validationDefault04" class="form-label">Tipo</label>
-                            <select class="form-select" id="pokeTipo" required>
-                                <!-- <option selected disabled value="Elige...">Elige...</option> -->
-                            </select>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control">
+                                <span class="input-group-text hp">HP</span>
+                            </div>
                         </div>
 
                         <div class="col-md-4">
-                            <label for="validationDefault04" class="form-label">Peso</label>
-                            <select class="form-select" id="validationDefault04" required>
-                                <option selected disabled value="">Elige...</option>
-                                <option>...</option>
-                            </select>
+                            <div class="input-group mb-3">
+
+                                <input type="text" class="form-control">
+                                <span class="input-group-text atk">ATK</span>
+                            </div>
                         </div>
 
                         <div class="col-md-4">
-                            <label for="validationDefault04" class="form-label">Tamaño</label>
-                            <select class="form-select" id="validationDefault04" required>
-                                <option selected disabled value="">Elige...</option>
-                                <option>...</option>
-                            </select>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control">
+                                <span class="input-group-text def">DEF</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control">
+                                <span class="input-group-text satk">S.ATK</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+
+                                <input type="text" class="form-control">
+                                <span class="input-group-text sdef">S.DEF</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control">
+                                <span class="input-group-text speed">SPD</span>
+                            </div>
                         </div>
 
                         <div class="col-12">
@@ -114,18 +134,15 @@
 
                             <div class="poke-card__name">
                                 <h4 class="poke-card__name__h4 text-center fw-bold"></h4>
-                                <p class="text-center poke-card__description">Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit.
-                                    Nostrum, et.</p>
+                                <p class="text-center poke-card__description"></p>
                             </div>
 
                             <div class="poke-card__stats">
-                                <p class="poke-card__p poke-card__pt">Tierra</p>
-                                <p class="poke-card__p poke-card__pt">246</p>
-                                <p class="poke-card__p poke-card__pt">1</p>
-                                <p class="fw-bold poke-card__p">TIPO</p>
-                                <p class="fw-bold poke-card__p">Nº</p>
-                                <p class="fw-bold poke-card__p">TAMAÑO</p>
+                                <p class="poke-card__p poke-card__pt poke-card__pt_tipo"></p>
+                                <p class="poke-card__p poke-card__pt poke-card__pt_numero"></p>
+                                <p class="fw-bolder poke-card__p">TIPO</p>
+                                <p class="fw-bolder poke-card__p">Nº</p>
+
                             </div>
 
                         </div>
