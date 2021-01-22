@@ -141,7 +141,6 @@ $('.boton_grafico').click(function () {
     asignar();
     event.preventDefault()
     var chart = new CanvasJS.Chart("chartContainer",
-
         {
             animationEnabled: true,
             animationDuration: 2000,
