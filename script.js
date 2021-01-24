@@ -4,6 +4,7 @@ let pesoPoke = ""
 let idPoke = ""
 let idNamae = ""
 
+
 /* Llamadas a la api */
 
 /* Llamada 1 - GET height + Modificar gráfico con los datos */
@@ -61,8 +62,9 @@ $.ajax({
     success: function (data) {
         const { results } = data;
         results.forEach(function (name, index) {
-            $('<option value="' + name.name + '">').appendTo('.pokeName');
-            $('<option value="' + index + '">').appendTo('.pokeNumber');
+            id = index + 1
+            $('<option value="' + name.name + '">' + name.name + '</option>"').appendTo('.pokeName');
+            $('<option value="' + id + '">' + id + '</option>"').appendTo('.pokeNumber');
         });
     }
 });
@@ -76,17 +78,21 @@ function llamada5() {
         url: 'https://pokeapi.co/api/v2/pokemon/' + idPoke + '',
         success: function (data) {
             comparador = []
-            console.log(data)
             const { sprites: { other: { dream_world: { front_default } } } } = data
             const { name } = data
             const { id } = data
-            const { stats } = data
+            const { stats: { 0: { base_stat: pHp } } } = data
+            const { stats: { 1: { base_stat: pAtk } } } = data
+            const { stats: { 2: { base_stat: pDef } } } = data
+            const { stats: { 3: { base_stat: pSatk } } } = data
+            const { stats: { 4: { base_stat: pSdef } } } = data
+            const { stats: { 5: { base_stat: pSpd } } } = data
             const { types: { 0: { type: { name: type } } } } = data
             $(".poke-card__imageFloat").attr("src", front_default)
             $(".poke-card__name__h4").text(name)
             $(".poke-card__pt_tipo").text(type)
             $(".poke-card__pt_numero").text(id)
-            comparador.push(stats)
+            comparador.push(pHp, pAtk, pDef, pSatk, pSdef, pSpd)
             return comparador
         }
     })
@@ -104,13 +110,18 @@ function llamada6() {
             const { sprites: { other: { dream_world: { front_default } } } } = data
             const { name } = data
             const { id } = data
-            const { stats } = data
+            const { stats: { 0: { base_stat: pHp } } } = data
+            const { stats: { 1: { base_stat: pAtk } } } = data
+            const { stats: { 2: { base_stat: pDef } } } = data
+            const { stats: { 3: { base_stat: pSatk } } } = data
+            const { stats: { 4: { base_stat: pSdef } } } = data
+            const { stats: { 5: { base_stat: pSpd } } } = data
             const { types: { 0: { type: { name: type } } } } = data
             $(".poke-card__imageFloat").attr("src", front_default)
             $(".poke-card__name__h4").text(name)
             $(".poke-card__pt_tipo").text(type)
             $(".poke-card__pt_numero").text(id)
-            comparador.push(stats)
+            comparador.push(pHp, pAtk, pDef, pSatk, pSdef, pSpd)
             return comparador
         }
     })
@@ -121,34 +132,41 @@ function llamada6() {
 /* Función Asignadora de array a Stats */
 
 function asignar() {
-    eHp = $('.hp').val()
-    eAtk = $('.atk').val()
-    eDef = $('.def').val()
-    eSatk = $('.satk').val()
-    eSdef = $('.sdef').val()
-    eSpd = $('.speed').val()
+    eHp = parseInt($('.hp').val())
+    eAtk = parseInt($('.atk').val())
+    eDef = parseInt($('.def').val())
+    eSatk = parseInt($('.satk').val())
+    eSdef = parseInt($('.sdef').val())
+    eSpd = parseInt($('.speed').val())
+}
 
+/* Función comparadora de stats vs pokemon */
 
-    /* Destructurar objeto comparador */
-
+function comparar() {
+    resultado = Math.abs(eHp - comparador[0]) + Math.abs(eAtk - comparador[1]) +
+        Math.abs(eDef - comparador[2]) + Math.abs(eSatk - comparador[3]) +
+        Math.abs(eSdef - comparador[4]) + Math.abs(eSpd - comparador[5]);
+    return
 }
 
 
 
-/* Gráfico + Botón*/
 
-$('.boton_grafico').click(function () {
-    asignar();
-    event.preventDefault()
+/* Destructurar objeto comparador */
+
+
+
+function draw() {
     var chart = new CanvasJS.Chart("chartContainer",
         {
+
             animationEnabled: true,
             animationDuration: 2000,
             title: {
-                text: "¿Cuánto conoce " + maestroPokemon + " a su pokemón " + nickPokemon + "?"
+                text: "¿Cuánto conoce " + maestroPokemon + " a su pokemón " + nickPokemon + "? \n Fallaste por: " + resultado + " puntos"
             },
             axisY: {
-                title: "Medals won",
+                title: "Stats",
                 maximum: 1010
             },
             data: [
@@ -159,11 +177,12 @@ $('.boton_grafico').click(function () {
                     color: "gold",
                     dataPoints: [
                         { y: eHp, label: "HP" },
-                        { y: 125, label: "ATK" },
-                        { y: 112, label: "DEF" },
-                        { y: 132, label: "S.ATK" },
-                        { y: 7, label: "S.DEF" },
-                        { y: 5, label: "SPD" }
+                        { y: eAtk, label: "ATK" },
+                        { y: eDef, label: "DEF" },
+                        { y: eSatk, label: "S.ATK" },
+                        { y: eSdef, label: "S.DEF" },
+                        { y: eSpd, label: "SPD" }
+
                     ]
                 },
                 {
@@ -172,24 +191,40 @@ $('.boton_grafico').click(function () {
                     legendText: "Pokemon",
                     color: "silver",
                     dataPoints: [
-                        { y: 198, label: "HP" },
-                        { y: 201, label: "ATK" },
-                        { y: 202, label: "DEF" },
-                        { y: 236, label: "S.ATK" },
-                        { y: 395, label: "S.DEF" },
-                        { y: 957, label: "SPD" }
+                        { y: comparador[0], label: "HP" },
+                        { y: comparador[1], label: "ATK" },
+                        { y: comparador[2], label: "DEF" },
+                        { y: comparador[3], label: "S.ATK" },
+                        { y: comparador[4], label: "S.DEF" },
+                        { y: comparador[5], label: "SPD" }
                     ]
                 }
             ]
         });
     chart.render();
+}
+
+
+
+
+/* Gráfico + Botón*/
+
+$('.boton_grafico').click(function () {
+
+    event.preventDefault()
+    asignar()
+    comparar()
+    draw()
+
+
+
 })
 
 /* Botón Invocar */
 
 $('.boton_invocar').click(function () {
+    event.preventDefault()
     if ($('#idPoke').val() != "") {
-        event.preventDefault()
         idPoke = $('#idPoke').val()
         maestroPokemon = $('#maestroPokemon').val()
         nickPokemon = $('#nickPokemon').val()

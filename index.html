@@ -24,11 +24,14 @@
                 <div class="col-12 col-sm-7 d-flex align-content-center appForm">
 
                     <!-- FORMULARIO -->
-                    <form class="row g-3">
+                    <form class="row g-3" was-validated>
                         <h4 class="text-center">Elige tu Pokemon</h4>
                         <div class="col-md-6">
                             <label for="validationDefault01" class="form-label">Entrenador Pokemon</label>
                             <input type="text" class="form-control" id="maestroPokemon" placeholder="Ash" required>
+                            <div class="valid-tooltip">
+                                Correcto
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="validationDefault02" class="form-label">Nick Pokemon</label>
@@ -37,18 +40,20 @@
 
                         <div class="col-md-6">
                             <label for="exampleDataList" class="form-label">Nombre Pokemon</label>
-                            <input class="form-control" list="datalistOptions" id="exampleDataList"
+                            <input class="form-select" list="datalistOptions" id="exampleDataList"
                                 placeholder="Pikachu...">
                             <datalist class="pokeName" id="datalistOptions">
 
                             </datalist>
+
                         </div>
                         <div class="col-md-6">
                             <label for="exampleDataList2" class="form-label">ID Pokemon</label>
-                            <input class="form-control" list="idPokeDatalist" id="idPoke" placeholder="1...">
-                            <datalist class="pokeNumber" id="idPokeDatalist">
+                            <select class="form-select pokeNumber" list="idPokeDatalist" id="idPoke" placeholder="1...">
+                                <datalist class="pokeNumber" id="idPokeDatalist">
 
-                            </datalist>
+                                </datalist>
+                            </select>
                         </div>
 
 
@@ -62,51 +67,51 @@
 
 
 
-
+                        <!-- Sección adivina sus stats -->
                         <h4 class="text-center">Adivina sus stats</h4>
 
-                        <!-- Dropdowns -->
+
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control">
-                                <span class="input-group-text hp">HP</span>
+                                <input type="text" class="form-control hp">
+                                <span class="input-group-text">HP</span>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-group mb-3">
 
-                                <input type="text" class="form-control">
-                                <span class="input-group-text atk">ATK</span>
+                                <input type="text" class="form-control atk">
+                                <span class="input-group-text ">ATK</span>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control">
-                                <span class="input-group-text def">DEF</span>
+                                <input type="text" class="form-control def">
+                                <span class="input-group-text ">DEF</span>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control">
-                                <span class="input-group-text satk">S.ATK</span>
+                                <input type="text" class="form-control satk">
+                                <span class="input-group-text ">S.ATK</span>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-group mb-3">
 
-                                <input type="text" class="form-control">
-                                <span class="input-group-text sdef">S.DEF</span>
+                                <input type="text" class="form-control sdef">
+                                <span class="input-group-text ">S.DEF</span>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control">
-                                <span class="input-group-text speed">SPD</span>
+                                <input type="text" class="form-control speed">
+                                <span class="input-group-text ">SPD</span>
                             </div>
                         </div>
 
@@ -122,7 +127,7 @@
                     <!-- FIN FORMULARIO -->
                 </div>
 
-                <!-- AppCard -->
+                <!-- AppCard Pokemon elegido -->
                 <div class="col-12 col-sm-5 mt-sm-0 mt-5 appCard">
                     <h4 class="text-center mb-5 pb-5">Pokemon Elegido</h4>
                     <div class="col mt-4 d-flex justify-content-center">
@@ -155,22 +160,18 @@
 
                     <!-- Fin AppCard -->
                 </div>
-
-
-
-
             </div>
+            <!-- Fin App Poke -->
         </div>
 
 
 
+        <!-- Container Gráfico -->
         <div class="container appGraph">
             <div class="col-12 pt-5 mt-5">
                 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
             </div>
         </div>
-
-
     </div>
 
 
